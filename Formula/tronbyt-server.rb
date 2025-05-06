@@ -1,4 +1,4 @@
-class Server < Formula
+class TronbytServer < Formula
   include Language::Python::Virtualenv
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
