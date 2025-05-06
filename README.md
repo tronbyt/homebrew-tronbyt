@@ -1,4 +1,4 @@
-# Tronbyt Tronbyt
+# Tronbyt Homebrew
 
 ## How do I install these formulae?
 
