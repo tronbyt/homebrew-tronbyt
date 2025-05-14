@@ -44,6 +44,6 @@ class Pixlet < Formula
   end
 
   test do
-    system "#{bin}/pixlet --version"
+    system "#{bin}/pixlet", "--version"
   end
 end
