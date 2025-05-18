@@ -3,8 +3,8 @@ class TronbytServer < Formula
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.1.3.tar.gz"
-  sha256 "b881b0e0e175b96456d67f3b4eafe7fe6d19308529ebb49da1688e23db40f854"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.1.5.tar.gz"
+  sha256 "ee71e04596a33c74fb8a1a52122bd0daed23b91f412df41dc1fe565c4a0c2b32"
   license "Apache-2.0"
   head "https://github.com/tronbyt/server.git", branch: "main"
 
@@ -26,8 +26,8 @@ class TronbytServer < Formula
   end
 
   resource "bitarray" do
-    url "https://files.pythonhosted.org/packages/10/85/65a7d3725665cb9a8ea1273b8ded5a8a4064686d51e320cadfecc7b4902f/bitarray-3.3.2.tar.gz"
-    sha256 "e91ddcdf4075de26234ae74b60cdd39e170e3e4fafa1c593ecc28749e9b165e2"
+    url "https://files.pythonhosted.org/packages/c4/40/505f2f7b1c26582ea350727468d368d0d3f2ed3d3e7fe582c8ab8bad8191/bitarray-3.4.1.tar.gz"
+    sha256 "e5fa88732bbcfb5437ee554e18f842a8f6c86be73656b0580ee146fd373176c9"
   end
 
   resource "bitstring" do
@@ -56,8 +56,8 @@ class TronbytServer < Formula
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/b9/2e/0090cbf739cee7d23781ad4b89a9894a41538e4fcf4c31dcdd705b78eb8b/click-8.1.8.tar.gz"
-    sha256 "ed53c9d8990d83c2a27deae68e4ee337473f6330c040a31d4225c9574d16096a"
+    url "https://files.pythonhosted.org/packages/cd/0f/62ca20172d4f87d93cf89665fbaedcd560ac48b465bd1d92bfc7ea6b0a41/click-8.2.0.tar.gz"
+    sha256 "f5452aeddd9988eefa20f90f05ab66f17fce1ee2a36907fd30b05bbb5953814d"
   end
 
   resource "ecdsa" do
@@ -71,8 +71,8 @@ class TronbytServer < Formula
   end
 
   resource "flask" do
-    url "https://files.pythonhosted.org/packages/89/50/dff6380f1c7f84135484e176e0cac8690af72fa90e932ad2a0a60e28c69b/flask-3.1.0.tar.gz"
-    sha256 "5f873c5184c897c8d9d1b05df1e3d01b14910ce69607a117bd3277098a5836ac"
+    url "https://files.pythonhosted.org/packages/c0/de/e47735752347f4128bcf354e0da07ef311a78244eba9e3dc1d4a5ab21a98/flask-3.1.1.tar.gz"
+    sha256 "284c7b8f2f58cb737f0cf1c30fd7eaf0ccfcde196099d24ecede3fc2005aa59e"
   end
 
   resource "flask-babel" do
