@@ -2,7 +2,7 @@ class Pixlet < Formula
   desc "App runtime and UX toolkit for pixel-based apps"
   homepage "https://github.com/tidbyt/pixlet"
   version "0.42.1"
-  revision 1
+  revision 2
 
   depends_on "webp"
 
