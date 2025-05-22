@@ -4,6 +4,7 @@ class Libpixlet < Formula
   url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.42.1.tar.gz"
   sha256 "d0100b8349b0a2adf5b63384791e0f89264f1419e78ddd254cf5f2b5fd1c5517"
   license "Apache-2.0"
+  revision 1
 
   depends_on "go" => :build
   depends_on "webp"
