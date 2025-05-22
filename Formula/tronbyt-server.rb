@@ -9,6 +9,12 @@ class TronbytServer < Formula
   revision 2
   head "https://github.com/tronbyt/server.git", branch: "main"
 
+  bottle do
+    root_url "https://ghcr.io/v2/tronbyt/tronbyt"
+    sha256 cellar: :any,                 arm64_sequoia: "116d21b79bfc6966ef5fd9d5972e24daeb1ada9fa9f06ceaac561bafc113d3c4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "770ad7dc561e184bfe984f05c9cd8a6b7b2db8f22e76b7f78c6d5d739f3da8a1"
+  end
+
   depends_on "cryptography"
   depends_on "esptool"
   depends_on "libpixlet"
