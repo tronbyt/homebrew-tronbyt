@@ -40,7 +40,12 @@ class Libpixlet < Formula
       }
     C
 
-    system ENV.c, "test.c", "-o", "test", "-I#{include}", "-L#{lib}", "-lwebm"
+    system ENV.cc, "test.c", "-o", "test",
+         "-I#{include}",
+         "-L#{lib}",
+         "-L#{Formula["webp"].opt_lib}",
+         "-lwebp",
+         "-lpixlet"
     system "./test"
   end
 end
