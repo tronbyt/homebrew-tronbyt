@@ -6,6 +6,13 @@ class Libpixlet < Formula
   license "Apache-2.0"
   revision 1
 
+  bottle do
+    root_url "https://ghcr.io/v2/tronbyt/tronbyt"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "c430bf18516a8cc6e62f3adf7618cf6852cce212a52cbf3b59c9f8e1e0aac873"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "53590f936b336f16bc506df6704e07f5bf31498c6fbd03a4cdbf1b42ceb42863"
+  end
+
   depends_on "go" => :build
   depends_on "webp"
 
