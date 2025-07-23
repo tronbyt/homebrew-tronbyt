@@ -1,50 +1,37 @@
 class Pixlet < Formula
   desc "App runtime and UX toolkit for pixel-based apps"
   homepage "https://github.com/tidbyt/pixlet"
-  version "0.42.1"
-  revision 2
+  version "0.43.0"
 
   depends_on "webp"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.42.1/pixlet_v0.42.1_darwin_arm64.tar.gz"
-      sha256 "d7e1c33fa4b877146c212fdbaec7aacc6973cf27fbc2683d37973cbfb84fd996"
-
-      def install
-        bin.install "pixlet"
-      end
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.43.0/pixlet_v0.43.0_darwin_arm64.tar.gz"
+      sha256 "cc060946cdf18db9338d28d710d44c73c55f503db210f538d32a23f9aae8080c"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.42.1/pixlet_v0.42.1_darwin_amd64.tar.gz"
-      sha256 "06382d1017eb3a31fea0be705379938e2df36bb5c6bd94302186a0e9a4d4c5ee"
-
-      def install
-        bin.install "pixlet"
-      end
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.43.0/pixlet_v0.43.0_darwin_amd64.tar.gz"
+      sha256 "6f3c8df5938ca759fc4e0e04d0cc9998a6c4f6297b6241edfc8e3f6e6e100778"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.42.1/pixlet_v0.42.1_linux_amd64.tar.gz"
-      sha256 "cc5a92ea30836c62695e74759d41d7f8da32f0007e7afc99c1e1a92c2c8438b9"
-
-      def install
-        bin.install "pixlet"
-      end
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.43.0/pixlet_v0.43.0_linux_amd64.tar.gz"
+      sha256 "76a68a2f34a17fde0fba065f512f14ac44079912755faf8910b90f6f1b5c2863"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.42.1/pixlet_v0.42.1_linux_arm64.tar.gz"
-      sha256 "17ad6fc74c25f62e044d0b021e143e4ae9beadf1d5c3db229951c233c58ad752"
-
-      def install
-        bin.install "pixlet"
-      end
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.43.0/pixlet_v0.43.0_linux_arm64.tar.gz"
+      sha256 "20e043a4accedc68eb5cc10a82263c7deb4e7c5af57b1cdb1cc5b6a85a41bcd3"
     end
   end
 
+  def install
+    bin.install "pixlet"
+  end
+
   test do
-    system "#{bin}/pixlet", "--version"
+    system "#{bin}/pixlet", "version"
   end
 end
