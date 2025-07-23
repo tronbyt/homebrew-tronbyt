@@ -10,8 +10,9 @@ class TronbytServer < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/tronbyt/tronbyt"
-    sha256 cellar: :any,                 arm64_sequoia: "93fba374f2a3ea5b0a31fd4dd379bce0811cbbef76d50def3a4ab6b4d6c2c9fa"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7d5417a33c3d9b2374bd9c997e1272b6e5e371cd80e0109cad980230a654a0a9"
+    sha256 cellar: :any,                 arm64_sequoia: "74d9a65ac5f3a260a50daa1caf46436fe9aa25c5646e71c61996599fd6ec1846"
+    sha256 cellar: :any,                 ventura:       "d1a5c2ff706d22fbd9c3bbffd4b68fc91b094e1787620dd51c2571f9d5c6fb62"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "440285a232cd43de3fb25fe3f25ddd4441e34df81402d5a3fe4dd01fc6aa6b11"
   end
 
   depends_on "cryptography"
