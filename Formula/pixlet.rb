@@ -3,6 +3,13 @@ class Pixlet < Formula
   homepage "https://github.com/tidbyt/pixlet"
   version "0.43.0"
 
+  bottle do
+    root_url "https://ghcr.io/v2/tronbyt/tronbyt"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cd66396b6a14fe7d4772b974e84cf88b3dc184704a3274f81445e2ae439caa6d"
+    sha256 cellar: :any_skip_relocation, ventura:       "e0ace01ea3cc4750a97c4791467011bc9468e6c8cbb26d3cba62fa6268de4da3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "314949c37022df6add9b34aec7797687bb8b05fe14920322ce1167d4a2144bd7"
+  end
+
   depends_on "webp"
 
   on_macos do
