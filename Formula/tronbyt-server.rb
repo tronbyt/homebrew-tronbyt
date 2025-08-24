@@ -10,9 +10,9 @@ class TronbytServer < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/tronbyt/tronbyt"
-    sha256 cellar: :any,                 arm64_sequoia: "74d9a65ac5f3a260a50daa1caf46436fe9aa25c5646e71c61996599fd6ec1846"
-    sha256 cellar: :any,                 ventura:       "d1a5c2ff706d22fbd9c3bbffd4b68fc91b094e1787620dd51c2571f9d5c6fb62"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "440285a232cd43de3fb25fe3f25ddd4441e34df81402d5a3fe4dd01fc6aa6b11"
+    sha256 cellar: :any,                 arm64_sequoia: "aeca394dd087010553994897cf5d27b9bc914e70928cceb42bf1ee95dc9d2e4e"
+    sha256 cellar: :any,                 ventura:       "403fa514fe6c54b07b4f68fc82f5f6d86bb8699c52853ebf145122dd4cb3666d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "957ba832f0b927b339a6fe94d009433395d3908af3fe1be8031833a580ff05c1"
   end
 
   depends_on "certifi"
