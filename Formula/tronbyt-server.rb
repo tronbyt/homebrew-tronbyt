@@ -3,10 +3,9 @@ class TronbytServer < Formula
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.2.1.tar.gz"
-  sha256 "8d70d8341e0b8ebbacf0ba81e88a844a29b750238084c33d6fdb1e8fa5a9af8c"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.2.2.tar.gz"
+  sha256 "01fdd419fa09f1563bf372c7ee67107771457a9f73fb0e694364704d0785fce4"
   license "Apache-2.0"
-  revision 1
   head "https://github.com/tronbyt/server.git", branch: "main"
 
   bottle do
@@ -31,8 +30,8 @@ class TronbytServer < Formula
   end
 
   resource "bitarray" do
-    url "https://files.pythonhosted.org/packages/70/56/844ba2a8e272146ece382eb529893858cee82b8c4048be69eef8b488dabd/bitarray-3.7.0.tar.gz"
-    sha256 "ae8fb4107c7a43f8979875dc465cab605b75b108e0db7a92da1a727128d0c865"
+    url "https://files.pythonhosted.org/packages/99/b6/282f5f0331b3877d4e79a8aa1cf63b5113a10f035a39bef1fa1dfe9e9e09/bitarray-3.7.1.tar.gz"
+    sha256 "795b1760418ab750826420ae24f06f392c08e21dc234f0a369a69cc00444f8ec"
   end
 
   resource "bitstring" do
@@ -51,13 +50,13 @@ class TronbytServer < Formula
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/60/6c/8ca2efa64cf75a977a0d7fac081354553ebe483345c734fb6b6515d96bbc/click-8.2.1.tar.gz"
-    sha256 "27c491cc05d968d271d5a1db13e3b5a184636d9d930f148c50b038f0d0646202"
+    url "https://files.pythonhosted.org/packages/46/61/de6cd827efad202d7057d93e0fed9294b96952e188f7384832791c7b2254/click-8.3.0.tar.gz"
+    sha256 "e7b8232224eba16f4ebe410c25ced9f7875cb5f3263ffc93cc3e8da705e229c4"
   end
 
   resource "esptool" do
-    url "https://files.pythonhosted.org/packages/6c/d1/92d407cffc2d7d0113ba965a1b79bf80c1ccfdb9f86495e31de07669472f/esptool-5.0.2.tar.gz"
-    sha256 "05cc4732eb2a9a7766c9e3531f7943d76ff0ca06dc9cd308d1d3d0b72f74aac2"
+    url "https://files.pythonhosted.org/packages/c2/03/d7d79a77dd787dbe6029809c5f81ad88912340a131c88075189f40df3aba/esptool-5.1.0.tar.gz"
+    sha256 "2ea9bcd7eb263d380a4fe0170856a10e4c65e3f38c757ebdc73584c8dd8322da"
   end
 
   resource "flask" do
@@ -111,8 +110,8 @@ class TronbytServer < Formula
   end
 
   resource "markupsafe" do
-    url "https://files.pythonhosted.org/packages/b2/97/5d42485e71dfc078108a86d6de8fa46db44a1a9295e89c5d6d4a06e23a62/markupsafe-3.0.2.tar.gz"
-    sha256 "ee55d3edf80167e48ea11a923c7386f4669df67d7994554387f84e7d8b0a2bf0"
+    url "https://files.pythonhosted.org/packages/7e/99/7690b6d4034fffd95959cbe0c02de8deb3098cc577c67bb6a24fe5d7caa7/markupsafe-3.0.3.tar.gz"
+    sha256 "722695808f4b6457b320fdc131280796bdceb04ab50fe1795cd540799ebe1698"
   end
 
   resource "mdurl" do
@@ -126,8 +125,8 @@ class TronbytServer < Formula
   end
 
   resource "pycparser" do
-    url "https://files.pythonhosted.org/packages/1d/b2/31537cf4b1ca988837256c910a668b553fceb8f069bedc4b1c826024b52c/pycparser-2.22.tar.gz"
-    sha256 "491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6"
+    url "https://files.pythonhosted.org/packages/fe/cf/d2d3b9f5699fb1e4615c8e32ff220203e43b248e1dfcc6736ad9057731ca/pycparser-2.23.tar.gz"
+    sha256 "78816d4f24add8f10a06d6f05b4d424ad9e96cfebf68a4ddc99c65c0720d00c2"
   end
 
   resource "pygments" do
@@ -151,8 +150,13 @@ class TronbytServer < Formula
   end
 
   resource "pyyaml" do
-    url "https://files.pythonhosted.org/packages/54/ed/79a089b6be93607fa5cdaedf301d7dfb23af5f25c398d5ead2525b063e17/pyyaml-6.0.2.tar.gz"
-    sha256 "d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e"
+    url "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz"
+    sha256 "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
+  end
+
+  resource "redis" do
+    url "https://files.pythonhosted.org/packages/0d/d6/e8b92798a5bd67d659d51a18170e91c16ac3b59738d91894651ee255ed49/redis-6.4.0.tar.gz"
+    sha256 "b01bc7282b8444e28ec36b261df5375183bb47a07eb9c603f284e89cbc5ef010"
   end
 
   resource "reedsolo" do
@@ -171,8 +175,8 @@ class TronbytServer < Formula
   end
 
   resource "rich-click" do
-    url "https://files.pythonhosted.org/packages/b7/a8/dcc0a8ec9e91d76ecad9413a84b6d3a3310c6111cfe012d75ed385c78d96/rich_click-1.8.9.tar.gz"
-    sha256 "fd98c0ab9ddc1cf9c0b7463f68daf28b4d0033a74214ceb02f761b3ff2af3136"
+    url "https://files.pythonhosted.org/packages/29/c2/f08b5e7c1a33af8a115be640aa0796ba01c4732696da6d2254391376b314/rich_click-1.9.1.tar.gz"
+    sha256 "4f2620589d7287f86265432e6a909de4f281de909fe68d8c835fbba49265d268"
   end
 
   resource "simple-websocket" do
@@ -181,8 +185,8 @@ class TronbytServer < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz"
-    sha256 "38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36"
+    url "https://files.pythonhosted.org/packages/72/94/1a15dd82efb362ac84269196e94cf00f187f7ed21c242792a923cdb1c61f/typing_extensions-4.15.0.tar.gz"
+    sha256 "0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466"
   end
 
   resource "tzlocal" do
