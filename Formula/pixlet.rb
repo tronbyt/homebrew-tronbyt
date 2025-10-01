@@ -1,7 +1,8 @@
 class Pixlet < Formula
   desc "App runtime and UX toolkit for pixel-based apps"
   homepage "https://github.com/tidbyt/pixlet"
-  version "0.43.0"
+  version "0.44.0"
+  license "Apache-2.0"
 
   bottle do
     root_url "https://ghcr.io/v2/tronbyt/tronbyt"
@@ -14,23 +15,23 @@ class Pixlet < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.43.0/pixlet_v0.43.0_darwin_arm64.tar.gz"
-      sha256 "cc060946cdf18db9338d28d710d44c73c55f503db210f538d32a23f9aae8080c"
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.44.0/pixlet_v0.44.0_darwin_arm64.tar.gz"
+      sha256 "8dbbfaed1d9ea2e3e18abbe782e28cc6245a8939683344923e2901874fc2134f"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.43.0/pixlet_v0.43.0_darwin_amd64.tar.gz"
-      sha256 "6f3c8df5938ca759fc4e0e04d0cc9998a6c4f6297b6241edfc8e3f6e6e100778"
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.44.0/pixlet_v0.44.0_darwin_amd64.tar.gz"
+      sha256 "02ff2ba9c1ec3b8aee0402f8cf19f871604a4e07647041e9f36e320d6103eaec"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.43.0/pixlet_v0.43.0_linux_amd64.tar.gz"
-      sha256 "76a68a2f34a17fde0fba065f512f14ac44079912755faf8910b90f6f1b5c2863"
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.44.0/pixlet_v0.44.0_linux_amd64.tar.gz"
+      sha256 "bb8e55a3c4d7f8196bf5432480512f1195d9c80d3f9afd4207c961de205ea87c"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.43.0/pixlet_v0.43.0_linux_arm64.tar.gz"
-      sha256 "20e043a4accedc68eb5cc10a82263c7deb4e7c5af57b1cdb1cc5b6a85a41bcd3"
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.44.0/pixlet_v0.44.0_linux_arm64.tar.gz"
+      sha256 "4d17da1b4bc3d949c1410dfc8a5f5703196fd04c9fe63a58d2fa07f04dc0179d"
     end
   end
 
