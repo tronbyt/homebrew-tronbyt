@@ -1,7 +1,7 @@
 class Pixlet < Formula
   desc "App runtime and UX toolkit for pixel-based apps"
   homepage "https://github.com/tidbyt/pixlet"
-  version "0.44.0"
+  version "0.45.0"
   license "Apache-2.0"
 
   bottle do
@@ -14,23 +14,23 @@ class Pixlet < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.44.0/pixlet_v0.44.0_darwin_arm64.tar.gz"
-      sha256 "8dbbfaed1d9ea2e3e18abbe782e28cc6245a8939683344923e2901874fc2134f"
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.45.0/pixlet_v0.45.0_darwin_arm64.tar.gz"
+      sha256 "5f140b2f9630557e2fa97042a0b8937728de25ba117407aba76d0be7fc7752b0"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.44.0/pixlet_v0.44.0_darwin_amd64.tar.gz"
-      sha256 "02ff2ba9c1ec3b8aee0402f8cf19f871604a4e07647041e9f36e320d6103eaec"
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.45.0/pixlet_v0.45.0_darwin_amd64.tar.gz"
+      sha256 "f4f65cfd4aa933568c4da6047a226e79c5eca0a73c99afd138bb1bc677ada88b"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.44.0/pixlet_v0.44.0_linux_amd64.tar.gz"
-      sha256 "bb8e55a3c4d7f8196bf5432480512f1195d9c80d3f9afd4207c961de205ea87c"
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.45.0/pixlet_v0.45.0_linux_amd64.tar.gz"
+      sha256 "2cfd511b4167652fd4e3f8a34f95bcb8199ccb8982fdf3447e1215d68eda9cc3"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.44.0/pixlet_v0.44.0_linux_arm64.tar.gz"
-      sha256 "4d17da1b4bc3d949c1410dfc8a5f5703196fd04c9fe63a58d2fa07f04dc0179d"
+      url "https://github.com/tronbyt/pixlet/releases/download/v0.45.0/pixlet_v0.45.0_linux_arm64.tar.gz"
+      sha256 "2620e8785de927f0323c8a3fe838011b28e03523e5fb8524344f0fdf0063b856"
     end
   end
 
