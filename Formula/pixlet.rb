@@ -15,7 +15,7 @@ class Pixlet < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/tronbyt/pixlet/releases/download/v0.46.0/pixlet_v0.46.0_darwin_arm64.tar.gz"
-      sha256 "3731180cdb60100f6e94fd2fb2a2c539cf38467291c727e4374e1817e420439e"
+      sha256 "524e522841e32841f67de00448ab2d99424295e34dc463552252d83aa8b37558"
     end
     if Hardware::CPU.intel?
       url "https://github.com/tronbyt/pixlet/releases/download/v0.46.0/pixlet_v0.46.0_darwin_amd64.tar.gz"
