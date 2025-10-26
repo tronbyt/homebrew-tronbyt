@@ -1,8 +1,10 @@
 class Pixlet < Formula
   desc "App runtime and UX toolkit for pixel-based apps"
-  homepage "https://github.com/tidbyt/pixlet"
-  version "0.46.0"
+  homepage "https://github.com/tronbyt/pixlet"
+  url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.46.0.tar.gz"
+  sha256 "eadaaa3f3dacae46d6119afc36fea9a1a3613188ff2b61cba0c0f2dc01a7840c"
   license "Apache-2.0"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/tronbyt/tronbyt"
@@ -10,32 +12,20 @@ class Pixlet < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux: "aaf71ea0c4f556103bee65bf54e50dfdb7c9960c9f3068872bf0e2f818c7f1c2"
   end
 
+  depends_on "go" => :build
+  depends_on "node" => :build
   depends_on "webp"
 
-  on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.46.0/pixlet_v0.46.0_darwin_arm64.tar.gz"
-      sha256 "524e522841e32841f67de00448ab2d99424295e34dc463552252d83aa8b37558"
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.46.0/pixlet_v0.46.0_darwin_amd64.tar.gz"
-      sha256 "3731180cdb60100f6e94fd2fb2a2c539cf38467291c727e4374e1817e420439e"
-    end
-  end
-
-  on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.46.0/pixlet_v0.46.0_linux_amd64.tar.gz"
-      sha256 "e462d4b1812fb777287b42580ba2ad671095a2e76866c2074966c65803b042ce"
-    end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/tronbyt/pixlet/releases/download/v0.46.0/pixlet_v0.46.0_linux_arm64.tar.gz"
-      sha256 "e43d60049b266090a7e5c844a3e91f5efdd328cfd3306ba3ed38234d2c7e8e11"
-    end
-  end
-
   def install
-    bin.install "pixlet"
+    system "npm", "install", *std_npm_args(prefix: false)
+    system "npm", "run", "build"
+
+    ldflags = %W[
+      -s -w
+      -X tidbyt.dev/pixlet/cmd.Version=#{version}
+    ]
+
+    system "go", "build", *std_go_args(ldflags: ldflags), "tidbyt.dev/pixlet"
   end
 
   test do
