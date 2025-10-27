@@ -4,6 +4,7 @@ class Libpixlet < Formula
   url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.46.0.tar.gz"
   sha256 "eadaaa3f3dacae46d6119afc36fea9a1a3613188ff2b61cba0c0f2dc01a7840c"
   license "Apache-2.0"
+  head "https://github.com/tronbyt/pixlet.git", branch: "main"
 
   bottle do
     root_url "https://ghcr.io/v2/tronbyt/tronbyt"
