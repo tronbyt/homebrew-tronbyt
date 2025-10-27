@@ -3,8 +3,8 @@ class TronbytServer < Formula
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.3.1.tar.gz"
-  sha256 "328d9a463972bb887bc70f31f58879145b45038627eb94328f5effdf4d3a08a7"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.1.tar.gz"
+  sha256 "855296ebb1ff869b45662f4000e49e03b5bf3a430f69759f6d9b9fb530b6c4ab"
   license "Apache-2.0"
   head "https://github.com/tronbyt/server.git", branch: "main"
 
@@ -14,6 +14,7 @@ class TronbytServer < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux: "0452fa2f1627f3d819800277cbd39d884dda00c3a922d8a2f9c51e16e897fa38"
   end
 
+  depends_on "rust" => :build
   depends_on "certifi"
   depends_on "cffi"
   depends_on "cryptography"
@@ -21,7 +22,22 @@ class TronbytServer < Formula
   depends_on "libpixlet"
   depends_on "libwebm"
   depends_on "libyaml"
-  depends_on "python@3.13"
+  depends_on "python@3.14"
+
+  resource "annotated-doc" do
+    url "https://files.pythonhosted.org/packages/d7/a6/dc46877b911e40c00d395771ea710d5e77b6de7bacd5fdcd78d70cc5a48f/annotated_doc-0.0.3.tar.gz"
+    sha256 "e18370014c70187422c33e945053ff4c286f453a984eba84d0dbfa0c935adeda"
+  end
+
+  resource "annotated-types" do
+    url "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz"
+    sha256 "aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89"
+  end
+
+  resource "anyio" do
+    url "https://files.pythonhosted.org/packages/c6/78/7d432127c41b50bccba979505f272c16cbcadcc33645d5fa3a738110ae75/anyio-4.11.0.tar.gz"
+    sha256 "82a8d0b81e318cc5ce71a5f1f8b5c4e63619620b63141ef8c995fa0db95a57c4"
+  end
 
   resource "babel" do
     url "https://files.pythonhosted.org/packages/7d/6b/d52e42361e1aa00709585ecc30b3f9684b3ab62530771402248b1b1d6240/babel-2.17.0.tar.gz"
@@ -38,11 +54,6 @@ class TronbytServer < Formula
     sha256 "a08bc09d3857216d4c0f412a1611056f1cc2b64fd254fb1e8a0afba7cfa1a95a"
   end
 
-  resource "blinker" do
-    url "https://files.pythonhosted.org/packages/21/28/9b3f50ce0e048515135495f198351908d99540d69bfdc8c1d15b73dc55ce/blinker-1.9.0.tar.gz"
-    sha256 "b4ce2265a7abece45e7cc896e98dbebe6cead56bcf805a3d23136d145f5445bf"
-  end
-
   resource "charset-normalizer" do
     url "https://files.pythonhosted.org/packages/13/69/33ddede1939fdd074bce5434295f38fae7136463422fe4fd3e0e89b98062/charset_normalizer-3.4.4.tar.gz"
     sha256 "94537985111c35f28720e43603b8e7b43a6ecfb2ce1d3058bbe955b73404e21a"
@@ -53,34 +64,49 @@ class TronbytServer < Formula
     sha256 "e7b8232224eba16f4ebe410c25ced9f7875cb5f3263ffc93cc3e8da705e229c4"
   end
 
+  resource "cryptography" do
+    url "https://files.pythonhosted.org/packages/9f/33/c00162f49c0e2fe8064a62cb92b93e50c74a72bc370ab92f86112b33ff62/cryptography-46.0.3.tar.gz"
+    sha256 "a8b17438104fed022ce745b362294d9ce35b4c2e45c1d958ad4a4b019285f4a1"
+  end
+
   resource "esptool" do
     url "https://files.pythonhosted.org/packages/c2/03/d7d79a77dd787dbe6029809c5f81ad88912340a131c88075189f40df3aba/esptool-5.1.0.tar.gz"
     sha256 "2ea9bcd7eb263d380a4fe0170856a10e4c65e3f38c757ebdc73584c8dd8322da"
   end
 
-  resource "flask" do
-    url "https://files.pythonhosted.org/packages/dc/6d/cfe3c0fcc5e477df242b98bfe186a4c34357b4847e87ecaef04507332dab/flask-3.1.2.tar.gz"
-    sha256 "bf656c15c80190ed628ad08cdfd3aaa35beb087855e2f494910aa3774cc4fd87"
+  resource "fastapi" do
+    url "https://files.pythonhosted.org/packages/40/cc/28aff6e246ee85bd571b26e4a793b84d42700e3bdc3008c3d747eda7b06d/fastapi-0.120.1.tar.gz"
+    sha256 "b5c6217e9ddca6dfcf54c97986180d4a1955e10c693d74943fc5327700178bff"
   end
 
-  resource "flask-babel" do
-    url "https://files.pythonhosted.org/packages/58/1a/4c65e3b90bda699a637bfb7fb96818b0a9bbff7636ea91aade67f6020a31/flask_babel-4.0.0.tar.gz"
-    sha256 "dbeab4027a3f4a87678a11686496e98e1492eb793cbdd77ab50f4e9a2602a593"
+  resource "fastapi-babel" do
+    url "https://files.pythonhosted.org/packages/ea/0d/271af537fddc3c08e5f6e36c4e9f12c55d98ff9240a37454125b3c772fd2/fastapi_babel-1.0.0.tar.gz"
+    sha256 "a70005e132b6cfc611a5a02601c63bcd26a1b1cb689d7295be4587c9d35402f3"
   end
 
-  resource "flask-sock" do
-    url "https://files.pythonhosted.org/packages/8d/8f/c6ab717dc90f4e46d1430335cd4ab13e3629410bb760c0ead6de476760fb/flask-sock-0.7.0.tar.gz"
-    sha256 "e023b578284195a443b8d8bdb4469e6a6acf694b89aeb51315b1a34fcf427b7d"
-  end
-
-  resource "gunicorn" do
-    url "https://files.pythonhosted.org/packages/34/72/9614c465dc206155d93eff0ca20d42e1e35afc533971379482de953521a4/gunicorn-23.0.0.tar.gz"
-    sha256 "f014447a0101dc57e294f6c18ca6b40227a4c90e9bdb586042628030cba004ec"
+  resource "fastapi-login" do
+    url "https://files.pythonhosted.org/packages/a0/4b/21e9372d157c0f2db613963f86832407c9ba064836e3612ed2a1b386a39f/fastapi_login-1.10.3.tar.gz"
+    sha256 "f0db92f59bc7dfa301dfe8fa5914062ff1582efc2f56b51ca5e23dde4edf8c27"
   end
 
   resource "h11" do
     url "https://files.pythonhosted.org/packages/01/ee/02a2c011bdab74c6fb3c75474d40b3052059d95df7e73351460c8588d963/h11-0.16.0.tar.gz"
     sha256 "4e35b956cf45792e4caa5885e69fba00bdbc6ffafbfa020300e549b208ee5ff1"
+  end
+
+  resource "httpcore" do
+    url "https://files.pythonhosted.org/packages/06/94/82699a10bca87a5556c9c59b5963f2d039dbd239f25bc2a63907a05a14cb/httpcore-1.0.9.tar.gz"
+    sha256 "6e34463af53fd2ab5d807f399a9b45ea31c3dfa2276f15a2c3f00afff6e176e8"
+  end
+
+  resource "httptools" do
+    url "https://files.pythonhosted.org/packages/b5/46/120a669232c7bdedb9d52d4aeae7e6c7dfe151e99dc70802e2fc7a5e1993/httptools-0.7.1.tar.gz"
+    sha256 "abd72556974f8e7c74a259655924a717a2365b236c882c3f6f8a45fe94703ac9"
+  end
+
+  resource "httpx" do
+    url "https://files.pythonhosted.org/packages/b1/df/48c586a5fe32a0f01324ee087459e112ebb7224f646c0b5023f5e79e9956/httpx-0.28.1.tar.gz"
+    sha256 "75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc"
   end
 
   resource "idna" do
@@ -118,19 +144,34 @@ class TronbytServer < Formula
     sha256 "bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"
   end
 
-  resource "packaging" do
-    url "https://files.pythonhosted.org/packages/a1/d4/1fc4078c65507b51b96ca8f8c3ba19e6a61c8253c72794544580a7b6c24d/packaging-25.0.tar.gz"
-    sha256 "d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f"
-  end
-
   resource "pycparser" do
     url "https://files.pythonhosted.org/packages/fe/cf/d2d3b9f5699fb1e4615c8e32ff220203e43b248e1dfcc6736ad9057731ca/pycparser-2.23.tar.gz"
     sha256 "78816d4f24add8f10a06d6f05b4d424ad9e96cfebf68a4ddc99c65c0720d00c2"
   end
 
+  resource "pydantic" do
+    url "https://files.pythonhosted.org/packages/f3/1e/4f0a3233767010308f2fd6bd0814597e3f63f1dc98304a9112b8759df4ff/pydantic-2.12.3.tar.gz"
+    sha256 "1da1c82b0fc140bb0103bc1441ffe062154c8d38491189751ee00fd8ca65ce74"
+  end
+
+  resource "pydantic-core" do
+    url "https://files.pythonhosted.org/packages/df/18/d0944e8eaaa3efd0a91b0f1fc537d3be55ad35091b6a87638211ba691964/pydantic_core-2.41.4.tar.gz"
+    sha256 "70e47929a9d4a1905a67e4b687d5946026390568a8e952b92824118063cee4d5"
+  end
+
+  resource "pydantic-settings" do
+    url "https://files.pythonhosted.org/packages/20/c5/dbbc27b814c71676593d1c3f718e6cd7d4f00652cefa24b75f7aa3efb25e/pydantic_settings-2.11.0.tar.gz"
+    sha256 "d0e87a1c7d33593beb7194adb8470fc426e95ba02af83a0f23474a04c9a08180"
+  end
+
   resource "pygments" do
     url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
     sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
+  end
+
+  resource "pyjwt" do
+    url "https://files.pythonhosted.org/packages/e7/46/bd74733ff231675599650d3e47f361794b22ef3e3770998dda30d3b63726/pyjwt-2.10.1.tar.gz"
+    sha256 "3cc5772eb20009233caf06e9d8a0577824723b44e6648ee0a2aedb6cf9381953"
   end
 
   resource "pyserial" do
@@ -139,13 +180,13 @@ class TronbytServer < Formula
   end
 
   resource "python-dotenv" do
-    url "https://files.pythonhosted.org/packages/f6/b0/4bc07ccd3572a2f9df7e6782f52b0c6c90dcbb803ac4a167702d7d0dfe1e/python_dotenv-1.1.1.tar.gz"
-    sha256 "a8a6399716257f45be6a007360200409fce5cda2661e3dec71d23dc15f6189ab"
+    url "https://files.pythonhosted.org/packages/f0/26/19cadc79a718c5edbec86fd4919a6b6d3f681039a2f6d66d14be94e75fb9/python_dotenv-1.2.1.tar.gz"
+    sha256 "42667e897e16ab0d66954af0e60a9caa94f0fd4ecf3aaf6d2d260eec1aa36ad6"
   end
 
-  resource "pytz" do
-    url "https://files.pythonhosted.org/packages/f8/bf/abbd3cdfb8fbc7fb3d4d38d320f2441b1e7cbe29be4f23797b4a2b5d8aac/pytz-2025.2.tar.gz"
-    sha256 "360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3"
+  resource "python-multipart" do
+    url "https://files.pythonhosted.org/packages/f3/87/f44d7c9f274c7ee665a29b885ec97089ec5dc034c7f3fafa03da9e39a09e/python_multipart-0.0.20.tar.gz"
+    sha256 "8dd0cab45b8e23064ae09147625994d090fa46f5b0d1e13af944c331a7fa9d13"
   end
 
   resource "pyyaml" do
@@ -154,8 +195,8 @@ class TronbytServer < Formula
   end
 
   resource "redis" do
-    url "https://files.pythonhosted.org/packages/d2/0e/80de0c7d9b04360331906b6b713a967e6523d155a92090983eba2e99302e/redis-7.0.0.tar.gz"
-    sha256 "6546ada54354248a53a47342d36abe6172bb156f23d24f018fda2e3c06b9c97a"
+    url "https://files.pythonhosted.org/packages/57/8f/f125feec0b958e8d22c8f0b492b30b1991d9499a4315dfde466cf4289edc/redis-7.0.1.tar.gz"
+    sha256 "c949df947dca995dc68fdf5a7863950bf6df24f8d6022394585acc98e81624f1"
   end
 
   resource "reedsolo" do
@@ -178,14 +219,24 @@ class TronbytServer < Formula
     sha256 "af73dc68e85f3bebb80ce302a642b9fe3b65f3df0ceb42eb9a27c467c1b678c8"
   end
 
-  resource "simple-websocket" do
-    url "https://files.pythonhosted.org/packages/b0/d4/bfa032f961103eba93de583b161f0e6a5b63cebb8f2c7d0c6e6efe1e3d2e/simple_websocket-1.1.0.tar.gz"
-    sha256 "7939234e7aa067c534abdab3a9ed933ec9ce4691b0713c78acb195560aa52ae4"
+  resource "sniffio" do
+    url "https://files.pythonhosted.org/packages/a2/87/a6771e1546d97e7e041b6ae58d80074f81b7d5121207425c964ddf5cfdbd/sniffio-1.3.1.tar.gz"
+    sha256 "f4324edc670a0f49750a81b895f35c3adb843cca46f0530f79fc1babb23789dc"
+  end
+
+  resource "starlette" do
+    url "https://files.pythonhosted.org/packages/a7/a5/d6f429d43394057b67a6b5bbe6eae2f77a6bf7459d961fdb224bf206eee6/starlette-0.48.0.tar.gz"
+    sha256 "7e8cee469a8ab2352911528110ce9088fdc6a37d9876926e73da7ce4aa4c7a46"
   end
 
   resource "typing-extensions" do
     url "https://files.pythonhosted.org/packages/72/94/1a15dd82efb362ac84269196e94cf00f187f7ed21c242792a923cdb1c61f/typing_extensions-4.15.0.tar.gz"
     sha256 "0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466"
+  end
+
+  resource "typing-inspection" do
+    url "https://files.pythonhosted.org/packages/55/e3/70399cb7dd41c10ac53367ae42139cf4b1ca5f36bb3dc6c9d33acdb43655/typing_inspection-0.4.2.tar.gz"
+    sha256 "ba561c48a67c5958007083d386c3295464928b01faa735ab8547c5692e87f464"
   end
 
   resource "tzlocal" do
@@ -198,33 +249,110 @@ class TronbytServer < Formula
     sha256 "3fc47733c7e419d4bc3f6b3dc2b4f890bb743906a30d56ba4a5bfa4bbff92760"
   end
 
+  resource "uvicorn" do
+    url "https://files.pythonhosted.org/packages/cb/ce/f06b84e2697fef4688ca63bdb2fdf113ca0a3be33f94488f2cadb690b0cf/uvicorn-0.38.0.tar.gz"
+    sha256 "fd97093bdd120a2609fc0d3afe931d4d4ad688b6e75f0f929fde1bc36fe0e91d"
+  end
+
+  resource "uvloop" do
+    url "https://files.pythonhosted.org/packages/06/f0/18d39dbd1971d6d62c4629cc7fa67f74821b0dc1f5a77af43719de7936a7/uvloop-0.22.1.tar.gz"
+    sha256 "6c84bae345b9147082b17371e3dd5d42775bddce91f885499017f4607fdaf39f"
+  end
+
+  resource "watchfiles" do
+    url "https://files.pythonhosted.org/packages/c2/c9/8869df9b2a2d6c59d79220a4db37679e74f807c559ffe5265e08b227a210/watchfiles-1.1.1.tar.gz"
+    sha256 "a173cb5c16c4f40ab19cecf48a534c409f7ea983ab8fed0741304a1c0a31b3f2"
+  end
+
+  resource "websockets" do
+    url "https://files.pythonhosted.org/packages/21/e6/26d09fab466b7ca9c7737474c52be4f76a40301b08362eb2dbc19dcc16c1/websockets-15.0.1.tar.gz"
+    sha256 "82544de02076bafba038ce055ee6412d68da13ab47f0c60cab827346de828dee"
+  end
+
   resource "werkzeug" do
     url "https://files.pythonhosted.org/packages/9f/69/83029f1f6300c5fb2471d621ab06f6ec6b3324685a2ce0f9777fd4a8b71e/werkzeug-3.1.3.tar.gz"
     sha256 "60723ce945c19328679790e3282cc758aa4a6040e4bb330f53d30fa546d44746"
   end
 
-  resource "wsproto" do
-    url "https://files.pythonhosted.org/packages/c9/4a/44d3c295350d776427904d73c189e10aeae66d7f555bb2feee16d1e4ba5a/wsproto-1.2.0.tar.gz"
-    sha256 "ad565f26ecb92588a3e43bc3d96164de84cd9902482b130d0ddbaa9664a85065"
-  end
-
   def install
     virtualenv_install_with_resources
-    (etc/"tronbyt-server").install "gunicorn.conf.py"
-    (var/"tronbyt-server").mkpath
+    mkdir_p var/"tronbyt-server/users"
+
+    (bin/"tronbyt-server").write <<~EOS
+      #!/bin/bash
+      set -euo pipefail
+
+      "#{libexec}/bin/python3" -c 'from tronbyt_server.startup import run_once; run_once()'
+
+      args_file="#{etc}/tronbyt-server/tronbyt-server.args"
+      user_args=()
+      if [[ -f "$args_file" ]]; then
+          # Strip comments, remove empty lines, and then use xargs for tokenization.
+          args_content=$(sed -e 's/#.*//' -e '/^\\s*$/d' "$args_file" | xargs)
+          if [[ -n "$args_content" ]]; then
+            read -r -a user_args <<< "$args_content"
+          fi
+      fi
+
+      cmd=(
+          "#{libexec}/bin/uvicorn"
+          --host=0.0.0.0
+          --port=8000
+          --workers="${WEB_CONCURRENCY:-2}"
+          --log-level="${LOG_LEVEL:-info}"
+          --forwarded-allow-ips='*'
+      )
+
+      if [[ ${#user_args[@]} -gt 0 ]]; then
+          cmd+=("${user_args[@]}")
+      fi
+
+      cmd+=("$@")
+      cmd+=("tronbyt_server.main:app")
+
+      exec "${cmd[@]}"
+    EOS
+
+    (etc/"tronbyt-server").mkpath
+    unless (etc/"tronbyt-server/tronbyt-server.args").exist?
+      (etc/"tronbyt-server/tronbyt-server.args").write <<~EOS
+        # Add custom uvicorn arguments here.
+        # Arguments can be on the same or different lines. Arguments with spaces must be quoted.
+        # For example:
+        # --port=8080
+        # --ssl-keyfile=/path/to/key.pem
+        # --ssl-certfile=/path/to/cert.pem
+      EOS
+    end
+
+    unless (var/"tronbyt-server/.env").exist?
+      (var/"tronbyt-server/.env").write <<~EOS
+        # Add application configuration here.
+        # For example:
+        # LOG_LEVEL=INFO
+      EOS
+    end
+  end
+
+  def caveats
+    <<~EOS
+      Tronbyt Server can be configured with custom uvicorn arguments in:
+        #{etc}/tronbyt-server/tronbyt-server.args
+
+      Application configuration should be placed in:
+        #{var}/tronbyt-server/.env
+    EOS
   end
 
   service do
     run [
-      opt_libexec/"bin/gunicorn",
-      "--config",
-      etc/"tronbyt-server/gunicorn.conf.py",
-      "tronbyt_server:create_app()",
+      opt_bin/"tronbyt-server",
+      "--host=127.0.0.1",
+      "--log-level=debug",
     ]
     environment_variables(
       LIBPIXLET_PATH:          Formula["libpixlet"].opt_lib/Formula["libpixlet"].shared_library("libpixlet"),
       PYTHONDONTWRITEBYTECODE: 1,
-      DATA_DIR:                var/"tronbyt-server",
     )
     keep_alive true
     log_path var/"log/tronbyt-server.log"
@@ -234,32 +362,26 @@ class TronbytServer < Formula
 
   test do
     port = free_port
-    (testpath/"gunicorn.conf.py").write <<~EOS
-      bind = "127.0.0.1:#{port}"
-      loglevel = "debug"
-      accesslog = "-"
-      errorlog = "-"
-      workers = 1
-      threads = 1
-      timeout = 120
-      reload = False
-      preload_app = False
-    EOS
     log_file = testpath/"tronbyt_server.log"
+    (testpath/"users").mkpath
     File.open(log_file, "w") do |file|
       pid = spawn(
-        opt_libexec/"bin/gunicorn",
-        "--config",
-        testpath/"gunicorn.conf.py",
-        "tronbyt_server:create_app()",
+        {
+          "LIBPIXLET_PATH" => Formula["libpixlet"].opt_lib/Formula["libpixlet"].shared_library("libpixlet"),
+        },
+        libexec/"bin/uvicorn",
+        "--host=127.0.0.1",
+        "--port=#{port}",
+        "--log-level=debug",
+        "tronbyt_server.main:app",
         out: file,
         err: file,
       )
-      sleep 20
+      sleep 10
       Process.kill("TERM", pid)
       Process.wait(pid)
     end
     output = log_file.read
-    assert_match "Listening at: http://127.0.0.1:#{port}", output
+    assert_match "Application startup complete", output
   end
 end
