@@ -347,8 +347,6 @@ class TronbytServer < Formula
   service do
     run [
       opt_bin/"tronbyt-server",
-      "--host=127.0.0.1",
-      "--log-level=debug",
     ]
     environment_variables(
       LIBPIXLET_PATH:          Formula["libpixlet"].opt_lib/Formula["libpixlet"].shared_library("libpixlet"),
