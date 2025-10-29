@@ -1,10 +1,12 @@
+require "json"
+
 class TronbytServer < Formula
   include Language::Python::Virtualenv
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.1.tar.gz"
-  sha256 "855296ebb1ff869b45662f4000e49e03b5bf3a430f69759f6d9b9fb530b6c4ab"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.2.tar.gz"
+  sha256 "d92109cc39afc70f06d31c6129923aebd1862910b8b527d65e2aa7f47984d685"
   license "Apache-2.0"
   head "https://github.com/tronbyt/server.git", branch: "main"
 
@@ -75,8 +77,8 @@ class TronbytServer < Formula
   end
 
   resource "fastapi" do
-    url "https://files.pythonhosted.org/packages/40/cc/28aff6e246ee85bd571b26e4a793b84d42700e3bdc3008c3d747eda7b06d/fastapi-0.120.1.tar.gz"
-    sha256 "b5c6217e9ddca6dfcf54c97986180d4a1955e10c693d74943fc5327700178bff"
+    url "https://files.pythonhosted.org/packages/a0/fb/79e556bc8f9d360e5cc2fa7364a7ad6bda6f1736938b43a2791fa8baee7b/fastapi-0.120.2.tar.gz"
+    sha256 "4c5ab43e2a90335bbd8326d1b659eac0f3dbcc015e2af573c4f5de406232c4ac"
   end
 
   resource "fastapi-babel" do
@@ -225,8 +227,8 @@ class TronbytServer < Formula
   end
 
   resource "starlette" do
-    url "https://files.pythonhosted.org/packages/a7/a5/d6f429d43394057b67a6b5bbe6eae2f77a6bf7459d961fdb224bf206eee6/starlette-0.48.0.tar.gz"
-    sha256 "7e8cee469a8ab2352911528110ce9088fdc6a37d9876926e73da7ce4aa4c7a46"
+    url "https://files.pythonhosted.org/packages/1b/3f/507c21db33b66fb027a332f2cb3abbbe924cc3a79ced12f01ed8645955c9/starlette-0.49.1.tar.gz"
+    sha256 "481a43b71e24ed8c43b11ea02f5353d77840e01480881b8cb5a26b8cae64a8cb"
   end
 
   resource "typing-extensions" do
@@ -275,14 +277,22 @@ class TronbytServer < Formula
   end
 
   def install
+    # Generate version.json
+    version_info = {
+      "version"    => version.to_s,
+      "tag"        => "v#{version}",
+      "branch"     => "main",
+      "build_date" => Time.now.utc.iso8601,
+    }
+    (buildpath/"tronbyt_server/version.json").write JSON.pretty_generate(version_info)
+
     virtualenv_install_with_resources
+    libexec.install "run.py"
     mkdir_p var/"tronbyt-server/users"
 
     (bin/"tronbyt-server").write <<~EOS
       #!/bin/bash
       set -euo pipefail
-
-      "#{libexec}/bin/python3" -c 'from tronbyt_server.startup import run_once; run_once()'
 
       args_file="#{etc}/tronbyt-server/tronbyt-server.args"
       user_args=()
@@ -295,12 +305,8 @@ class TronbytServer < Formula
       fi
 
       cmd=(
-          "#{libexec}/bin/uvicorn"
-          --host=0.0.0.0
-          --port=8000
-          --workers="${WEB_CONCURRENCY:-2}"
-          --log-level="${LOG_LEVEL:-info}"
-          --forwarded-allow-ips='*'
+          "#{libexec}/bin/python3"
+          "#{libexec}/run.py"
       )
 
       if [[ ${#user_args[@]} -gt 0 ]]; then
@@ -308,7 +314,6 @@ class TronbytServer < Formula
       fi
 
       cmd+=("$@")
-      cmd+=("tronbyt_server.main:app")
 
       exec "${cmd[@]}"
     EOS
@@ -367,16 +372,17 @@ class TronbytServer < Formula
         {
           "LIBPIXLET_PATH" => Formula["libpixlet"].opt_lib/Formula["libpixlet"].shared_library("libpixlet"),
         },
-        libexec/"bin/uvicorn",
+        libexec/"bin/python3",
+        libexec/"run.py",
         "--host=127.0.0.1",
         "--port=#{port}",
         "--log-level=debug",
-        "tronbyt_server.main:app",
         out: file,
         err: file,
       )
-      sleep 10
+      sleep 20
       Process.kill("TERM", pid)
+      Process.kill("KILL", pid)
       Process.wait(pid)
     end
     output = log_file.read
