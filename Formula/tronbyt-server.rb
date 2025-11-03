@@ -5,8 +5,8 @@ class TronbytServer < Formula
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.3.tar.gz"
-  sha256 "a693ff47e2b89d34e33da37f5db3b23d1e2c69c5e6e8cb4e852d8f34314e131a"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.4.tar.gz"
+  sha256 "b9cb60382cb9b01d3c36481b0caf2026742e3a50ba38a5e133d5aca2c1478894"
   license "Apache-2.0"
   head "https://github.com/tronbyt/server.git", branch: "main"
 
@@ -49,8 +49,8 @@ class TronbytServer < Formula
   end
 
   resource "bitarray" do
-    url "https://files.pythonhosted.org/packages/e8/c1/644ea86b6f1a0864f656a3b3ee5bf8c29daa895cb3233942315fe065ea3a/bitarray-3.7.2.tar.gz"
-    sha256 "27a59bb7c64c0d094057a3536e15fdd693f8520771ee75d9344b82d0a5ade2d0"
+    url "https://files.pythonhosted.org/packages/95/06/92fdc84448d324ab8434b78e65caf4fb4c6c90b4f8ad9bdd4c8021bfaf1e/bitarray-3.8.0.tar.gz"
+    sha256 "3eae38daffd77c9621ae80c16932eea3fb3a4af141fb7cc724d4ad93eff9210d"
   end
 
   resource "bitstring" do
