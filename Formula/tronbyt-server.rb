@@ -8,6 +8,7 @@ class TronbytServer < Formula
   url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.4.tar.gz"
   sha256 "b9cb60382cb9b01d3c36481b0caf2026742e3a50ba38a5e133d5aca2c1478894"
   license "Apache-2.0"
+  revision 1
   head "https://github.com/tronbyt/server.git", branch: "main"
 
   bottle do
@@ -26,7 +27,8 @@ class TronbytServer < Formula
   depends_on "libyaml"
   depends_on "python@3.14"
 
-  pypi_packages exclude_packages: ["certifi", "cffi", "cryptography"]
+  pypi_packages exclude_packages: ["certifi", "cffi", "cryptography"],
+                extra_packages:   ["uvloop"]
 
   resource "annotated-doc" do
     url "https://files.pythonhosted.org/packages/d7/a6/dc46877b911e40c00d395771ea710d5e77b6de7bacd5fdcd78d70cc5a48f/annotated_doc-0.0.3.tar.gz"
