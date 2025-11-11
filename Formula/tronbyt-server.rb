@@ -5,8 +5,8 @@ class TronbytServer < Formula
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.6.tar.gz"
-  sha256 "be8885ae77818cad3e1193f2c37155a22ba657fac56142cfd2a0dbfcbe8bc94d"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.7.tar.gz"
+  sha256 "2db25e517e494d5bccef89c3aeed069f75420ad5d7638f67f706376e24a8c4d6"
   license "Apache-2.0"
   head "https://github.com/tronbyt/server.git", branch: "main"
 
@@ -29,8 +29,8 @@ class TronbytServer < Formula
   pypi_packages exclude_packages: ["certifi", "cffi", "cryptography"]
 
   resource "annotated-doc" do
-    url "https://files.pythonhosted.org/packages/d7/a6/dc46877b911e40c00d395771ea710d5e77b6de7bacd5fdcd78d70cc5a48f/annotated_doc-0.0.3.tar.gz"
-    sha256 "e18370014c70187422c33e945053ff4c286f453a984eba84d0dbfa0c935adeda"
+    url "https://files.pythonhosted.org/packages/57/ba/046ceea27344560984e26a590f90bc7f4a75b06701f653222458922b558c/annotated_doc-0.0.4.tar.gz"
+    sha256 "fbcda96e87e9c92ad167c2e53839e57503ecfda18804ea28102353485033faa4"
   end
 
   resource "annotated-types" do
@@ -74,8 +74,8 @@ class TronbytServer < Formula
   end
 
   resource "fastapi" do
-    url "https://files.pythonhosted.org/packages/3f/3a/0bf90d5189d7f62dc2bd0523899629ca59b58ff4290d631cd3bb5c8889d4/fastapi-0.120.4.tar.gz"
-    sha256 "2d856bc847893ca4d77896d4504ffdec0fb04312b705065fca9104428eca3868"
+    url "https://files.pythonhosted.org/packages/6b/a4/29e1b861fc9017488ed02ff1052feffa40940cb355ed632a8845df84ce84/fastapi-0.121.1.tar.gz"
+    sha256 "b6dba0538fd15dab6fe4d3e5493c3957d8a9e1e9257f56446b5859af66f32441"
   end
 
   resource "fastapi-babel" do
@@ -154,18 +154,18 @@ class TronbytServer < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/f3/1e/4f0a3233767010308f2fd6bd0814597e3f63f1dc98304a9112b8759df4ff/pydantic-2.12.3.tar.gz"
-    sha256 "1da1c82b0fc140bb0103bc1441ffe062154c8d38491189751ee00fd8ca65ce74"
+    url "https://files.pythonhosted.org/packages/96/ad/a17bc283d7d81837c061c49e3eaa27a45991759a1b7eae1031921c6bd924/pydantic-2.12.4.tar.gz"
+    sha256 "0f8cb9555000a4b5b617f66bfd2566264c4984b27589d3b845685983e8ea85ac"
   end
 
   resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/df/18/d0944e8eaaa3efd0a91b0f1fc537d3be55ad35091b6a87638211ba691964/pydantic_core-2.41.4.tar.gz"
-    sha256 "70e47929a9d4a1905a67e4b687d5946026390568a8e952b92824118063cee4d5"
+    url "https://files.pythonhosted.org/packages/71/70/23b021c950c2addd24ec408e9ab05d59b035b39d97cdc1130e1bce647bb6/pydantic_core-2.41.5.tar.gz"
+    sha256 "08daa51ea16ad373ffd5e7606252cc32f07bc72b28284b6bc9c6df804816476e"
   end
 
   resource "pydantic-settings" do
-    url "https://files.pythonhosted.org/packages/20/c5/dbbc27b814c71676593d1c3f718e6cd7d4f00652cefa24b75f7aa3efb25e/pydantic_settings-2.11.0.tar.gz"
-    sha256 "d0e87a1c7d33593beb7194adb8470fc426e95ba02af83a0f23474a04c9a08180"
+    url "https://files.pythonhosted.org/packages/43/4b/ac7e0aae12027748076d72a8764ff1c9d82ca75a7a52622e67ed3f765c54/pydantic_settings-2.12.0.tar.gz"
+    sha256 "005538ef951e3c2a68e1c08b292b5f2e71490def8589d4221b95dab00dafcfd0"
   end
 
   resource "pygments" do
@@ -294,7 +294,6 @@ class TronbytServer < Formula
     (buildpath/"tronbyt_server/version.json").write JSON.pretty_generate(version_info)
 
     virtualenv_install_with_resources
-    libexec.install "run.py"
     mkdir_p var/"tronbyt-server/users"
 
     (bin/"tronbyt-server").write <<~EOS
@@ -313,7 +312,8 @@ class TronbytServer < Formula
 
       cmd=(
           "#{libexec}/bin/python3"
-          "#{libexec}/run.py"
+          "-m"
+          "tronbyt_server.run"
       )
 
       if [[ ${#user_args[@]} -gt 0 ]]; then
@@ -380,7 +380,8 @@ class TronbytServer < Formula
           "LIBPIXLET_PATH" => Formula["libpixlet"].opt_lib/Formula["libpixlet"].shared_library("libpixlet"),
         },
         libexec/"bin/python3",
-        libexec/"run.py",
+        "-m",
+        "tronbyt_server.run",
         "--host=127.0.0.1",
         "--port=#{port}",
         "--log-level=debug",
