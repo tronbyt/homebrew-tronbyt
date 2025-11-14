@@ -4,6 +4,7 @@ class Pixlet < Formula
   url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.47.3.tar.gz"
   sha256 "e78480e9e1e802c9d4ab98d143b1bf2ce044d95f8d4b7d9988c061c845bae3aa"
   license "Apache-2.0"
+  revision 1
   head "https://github.com/tronbyt/pixlet.git", branch: "main"
 
   bottle do
@@ -24,7 +25,7 @@ class Pixlet < Formula
 
     ldflags = %W[
       -s -w
-      -X tidbyt.dev/pixlet/cmd.Version=#{version}
+      -X github.com/tronbyt/pixlet/cmd.Version=#{version}
     ]
 
     system "go", "build", *std_go_args(ldflags: ldflags), "github.com/tronbyt/pixlet"
