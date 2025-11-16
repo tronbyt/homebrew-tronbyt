@@ -5,8 +5,8 @@ class TronbytServer < Formula
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.7.tar.gz"
-  sha256 "2db25e517e494d5bccef89c3aeed069f75420ad5d7638f67f706376e24a8c4d6"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.8.tar.gz"
+  sha256 "d3bb40851c80c244eb8ac16323045cf687aa58c3c44d3b34f7363273ec6dd9cc"
   license "Apache-2.0"
   head "https://github.com/tronbyt/server.git", branch: "main"
 
@@ -64,8 +64,8 @@ class TronbytServer < Formula
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/46/61/de6cd827efad202d7057d93e0fed9294b96952e188f7384832791c7b2254/click-8.3.0.tar.gz"
-    sha256 "e7b8232224eba16f4ebe410c25ced9f7875cb5f3263ffc93cc3e8da705e229c4"
+    url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
+    sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
   end
 
   resource "esptool" do
@@ -74,8 +74,8 @@ class TronbytServer < Formula
   end
 
   resource "fastapi" do
-    url "https://files.pythonhosted.org/packages/6b/a4/29e1b861fc9017488ed02ff1052feffa40940cb355ed632a8845df84ce84/fastapi-0.121.1.tar.gz"
-    sha256 "b6dba0538fd15dab6fe4d3e5493c3957d8a9e1e9257f56446b5859af66f32441"
+    url "https://files.pythonhosted.org/packages/fb/48/f08f264da34cf160db82c62ffb335e838b1fc16cbcc905f474c7d4c815db/fastapi-0.121.2.tar.gz"
+    sha256 "ca8e932b2b823ec1721c641e3669472c855ad9564a2854c9899d904c2848b8b9"
   end
 
   resource "fastapi-babel" do
