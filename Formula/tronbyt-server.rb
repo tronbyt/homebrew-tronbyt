@@ -5,8 +5,8 @@ class TronbytServer < Formula
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.8.tar.gz"
-  sha256 "d3bb40851c80c244eb8ac16323045cf687aa58c3c44d3b34f7363273ec6dd9cc"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.10.tar.gz"
+  sha256 "c31fd7ae3b9e2c6b9148e6e63bb144d04ae6eb2d8dff8e8d7ca00a7344142277"
   license "Apache-2.0"
   head "https://github.com/tronbyt/server.git", branch: "main"
 
@@ -388,7 +388,7 @@ class TronbytServer < Formula
         out: file,
         err: file,
       )
-      sleep 20
+      sleep 30
       Process.kill("TERM", pid)
       Process.kill("KILL", pid)
       Process.wait(pid)

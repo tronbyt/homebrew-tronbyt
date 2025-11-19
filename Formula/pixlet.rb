@@ -4,7 +4,6 @@ class Pixlet < Formula
   url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.48.1.tar.gz"
   sha256 "0622c57d695f524b540f265d21d5ee748c9552b3b6aa0222bcea3e3e979f982f"
   license "Apache-2.0"
-  revision 1
   head "https://github.com/tronbyt/pixlet.git", branch: "main"
 
   bottle do
