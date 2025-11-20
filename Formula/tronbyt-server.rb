@@ -5,8 +5,8 @@ class TronbytServer < Formula
 
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
-  url "https://github.com/tronbyt/server/archive/refs/tags/v1.5.10.tar.gz"
-  sha256 "c31fd7ae3b9e2c6b9148e6e63bb144d04ae6eb2d8dff8e8d7ca00a7344142277"
+  url "https://github.com/tronbyt/server/archive/refs/tags/v1.6.0.tar.gz"
+  sha256 "2965036354eb57913a0c808f78f3c4d8d78ca508a41863a7012c455934be8c4e"
   license "Apache-2.0"
   head "https://github.com/tronbyt/server.git", branch: "main"
 
