@@ -22,12 +22,16 @@ class Pixlet < Formula
       system "npm", "run", "build"
     end
 
+    system "go", "generate", "./fonts"
+
     ldflags = %W[
       -s -w
       -X github.com/tronbyt/pixlet/cmd.Version=#{version}
     ]
 
-    system "go", "build", *std_go_args(ldflags: ldflags), "github.com/tronbyt/pixlet"
+    tags = ["gzip_fonts"]
+
+    system "go", "build", *std_go_args(ldflags: ldflags, tags: tags), "github.com/tronbyt/pixlet"
 
     generate_completions_from_executable(bin/"pixlet", "completion")
   end
