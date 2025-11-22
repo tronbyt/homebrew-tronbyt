@@ -28,6 +28,8 @@ class Pixlet < Formula
     ]
 
     system "go", "build", *std_go_args(ldflags: ldflags), "github.com/tronbyt/pixlet"
+
+    generate_completions_from_executable(bin/"pixlet", "completion")
   end
 
   test do
