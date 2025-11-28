@@ -16,15 +16,18 @@ class Libpixlet < Formula
   depends_on "webp"
 
   def install
+    system "go", "generate", "./fonts"
+
     ldflags = %W[
       -s -w
-      -X tidbyt.dev/pixlet/cmd.Version=#{version}
+      -X github.com/tronbyt/pixlet/runtime.Version=v#{version}
     ]
 
+    tags = ["lib", "gzip_fonts"]
+
     system "go", "build",
-      "-tags", "lib",
       "-buildmode=c-shared",
-      *std_go_args(ldflags: ldflags, output: shared_library("libpixlet")),
+      *std_go_args(ldflags: ldflags, tags: tags, output: shared_library("libpixlet")),
       "library/library.go"
 
     # install dylib with version and symlink
