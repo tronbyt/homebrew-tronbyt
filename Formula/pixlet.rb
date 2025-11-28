@@ -24,7 +24,7 @@ class Pixlet < Formula
 
     ldflags = %W[
       -s -w
-      -X github.com/tronbyt/pixlet/cmd.Version=#{version}
+      -X github.com/tronbyt/pixlet/runtime.Version=v#{version}
     ]
 
     system "go", "build", *std_go_args(ldflags: ldflags), "github.com/tronbyt/pixlet"
