@@ -28,7 +28,7 @@ class Libpixlet < Formula
     system "go", "build",
       "-buildmode=c-shared",
       *std_go_args(ldflags: ldflags, tags: tags, output: shared_library("libpixlet")),
-      "library/library.go"
+      "library"
 
     # install dylib with version and symlink
     target = shared_library("libpixlet", version.to_s)
