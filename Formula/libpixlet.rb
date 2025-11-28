@@ -1,8 +1,8 @@
 class Libpixlet < Formula
   desc "Build apps for pixel-based displays"
   homepage "https://github.com/tronbyt/pixlet"
-  url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.49.0.tar.gz"
-  sha256 "4de992daef09d0b2987c1734a0a5b2ec0ef5c9c51e37ce62bd65b9ec98439222"
+  url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.49.1.tar.gz"
+  sha256 "fce42c5f68cb2f20242607273dd1a62aedfe0bcd61eaca4b3e1936fa392eb78b"
   license "Apache-2.0"
   head "https://github.com/tronbyt/pixlet.git", branch: "main"
 
@@ -28,7 +28,7 @@ class Libpixlet < Formula
     system "go", "build",
       "-buildmode=c-shared",
       *std_go_args(ldflags: ldflags, tags: tags, output: shared_library("libpixlet")),
-      "library"
+      "./library"
 
     # install dylib with version and symlink
     target = shared_library("libpixlet", version.to_s)
