@@ -1,8 +1,8 @@
 class Libpixlet < Formula
   desc "Build apps for pixel-based displays"
   homepage "https://github.com/tronbyt/pixlet"
-  url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.49.2.tar.gz"
-  sha256 "f6e30793534bea638635112dbc01dbe65707f08cd88392720b4edcc307383e44"
+  url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.49.3.tar.gz"
+  sha256 "ccd4e1aa90bc29adce7254e02a470abe7e139e008bf2fbd0ab70059960f249c1"
   license "Apache-2.0"
   head "https://github.com/tronbyt/pixlet.git", branch: "main"
 
