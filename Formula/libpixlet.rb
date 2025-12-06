@@ -8,8 +8,8 @@ class Libpixlet < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/tronbyt/tronbyt"
-    sha256 cellar: :any,                 arm64_tahoe:  "bd6dcb19d0d90ffa23168c550d42b2c381276a959e3bdd045958d75c76ef0c89"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "d4f148fc239add1215cf01e0276e9b24204bcf3a1b67fbd975d5101c8c863bfa"
+    sha256 cellar: :any,                 arm64_tahoe:  "18c7d131b0ffbaff74c18a296c00d6e10d18d0ed6aef60ea2ffbb51ad925868e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "dba7b012273adbbba6ba3537a6cd2231b0ee2280a5d5ab7f74127e39122b6e82"
   end
 
   depends_on "go" => :build
