@@ -1,8 +1,8 @@
 class Libpixlet < Formula
   desc "Build apps for pixel-based displays"
   homepage "https://github.com/tronbyt/pixlet"
-  url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.49.5.tar.gz"
-  sha256 "3c32482e570923188dc935c794ea9a9dab688664adaa86711c6c0ad2a662edc6"
+  url "https://github.com/tronbyt/pixlet/archive/refs/tags/v0.49.6.tar.gz"
+  sha256 "35c38e1a7210c9751071796ac6d753bc1abe3d5d1fd106dce098f27f1dff3352"
   license "Apache-2.0"
   head "https://github.com/tronbyt/pixlet.git", branch: "main"
 
@@ -16,8 +16,6 @@ class Libpixlet < Formula
   depends_on "webp"
 
   def install
-    system "go", "generate", "./fonts"
-
     ldflags = %W[
       -s -w
       -X github.com/tronbyt/pixlet/runtime.Version=v#{version}
