@@ -354,14 +354,14 @@ class TronbytServer < Formula
           # --ssl-certfile=/path/to/cert.pem
         EOS
       end
+    end
 
-      unless (var/"tronbyt-server/.env").exist?
-        (var/"tronbyt-server/.env").write <<~EOS
-          # Add application configuration here.
-          # For example:
-          # LOG_LEVEL=INFO
-        EOS
-      end
+    unless (var/"tronbyt-server/.env").exist?
+      (var/"tronbyt-server/.env").write <<~EOS
+        # Add application configuration here.
+        # For example:
+        # LOG_LEVEL=INFO
+      EOS
     end
   end
 
