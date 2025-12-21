@@ -1,8 +1,4 @@
-require "json"
-
 class TronbytServer < Formula
-  include Language::Python::Virtualenv
-
   desc "Manage your apps on your Tronbyt (flashed Tidbyt) completely locally"
   homepage "https://github.com/tronbyt/server"
   url "https://github.com/tronbyt/server/archive/refs/tags/v2.0.0.tar.gz"
@@ -17,9 +13,12 @@ class TronbytServer < Formula
   end
 
   depends_on "go" => :build
+  depends_on "pkgconf" => :build
   depends_on "webp"
 
   def install
+    ENV["CGO_ENABLED"] = "1" if OS.linux? && Hardware::CPU.arm?
+
     commit = build.head? ? Utils.git_short_head : tap.user.to_s
     ldflags = %W[
       -s -w
@@ -29,13 +28,11 @@ class TronbytServer < Formula
     ]
     system "go", "build", *std_go_args(output: bin/"tronbyt-server", ldflags: ldflags), "./cmd/server"
 
-    unless (var/"tronbyt-server/.env").exist?
-      (var/"tronbyt-server/.env").write <<~EOS
-        # Add application configuration here.
-        # For example:
-        # LOG_LEVEL=INFO
-      EOS
-    end
+    (var/"tronbyt-server/.env").write <<~EOS
+      # Add application configuration here.
+      # For example:
+      # LOG_LEVEL=INFO
+    EOS
   end
 
   def caveats
