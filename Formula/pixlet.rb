@@ -17,6 +17,8 @@ class Pixlet < Formula
   depends_on "webp"
 
   def install
+    ENV["CGO_ENABLED"] = "1" if OS.linux? && Hardware::CPU.arm?
+
     cd "frontend" do
       system "npm", "install", *std_npm_args(prefix: false)
       system "npm", "run", "build"
@@ -29,12 +31,12 @@ class Pixlet < Formula
 
     tags = ["gzip_fonts"]
 
-    system "go", "build", *std_go_args(ldflags: ldflags, tags: tags), "github.com/tronbyt/pixlet"
+    system "go", "build", *std_go_args(ldflags:, tags:), "github.com/tronbyt/pixlet"
 
     generate_completions_from_executable(bin/"pixlet", "completion")
   end
 
   test do
-    system "#{bin}/pixlet", "version"
+    assert_match "Pixlet version:", shell_output("#{bin}/pixlet version")
   end
 end
